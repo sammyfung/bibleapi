@@ -9,19 +9,19 @@ class VersionAdmin(admin.ModelAdmin):
 
 
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('id', 'version', 'name', 'testament')
+    list_display = ('id', 'version', 'name', 'testament', 'parent')
     list_filter = ['version', 'testament']
-    search_fields = ['name']
+    search_fields = ['name', 'parent__name']
 
 
 class BibleAdmin(admin.ModelAdmin):
     list_display = ('id', 'book', 'chapter', 'verse', 'text')
-    search_fields = ('book.version', 'book.name', 'text')
+    search_fields = ('book__version__code', 'book__name', 'text')
 
 
 class HeadingAdmin(admin.ModelAdmin):
     list_display = ('id', 'before', 'text')
-    search_fields = ('before.book.name', 'text')
+    search_fields = ('before__book__name', 'text')
 
 
 admin.site.register(Version, VersionAdmin)

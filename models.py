@@ -22,6 +22,7 @@ class Book(models.Model):
     name = models.CharField(max_length=30)
     testament = models.CharField(max_length=1, choices=TESTAMENT)
     order = models.IntegerField(default=0)
+    parent = models.ForeignKey("self", null=True, blank=True)
 
     def __str__(self):
         return "%s (%s)"%(self.name, self.version)

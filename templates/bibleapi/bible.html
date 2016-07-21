@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ bible.book }} {{ bible.chapter }}{% if bible.verse > 0 %}:{{ bible.verse }}{% endif %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/bibleapi/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+  {% include "bibleapi/top_navbar.html" %}
+  <div class="container">
+      <div class="row">
+        <h1>{{ bible.book }} {{ bible.chapter }}{% if bible.verse > 0 %}:{{ bible.verse }}{% endif %}</h1>
+      </div>
+      <div class="row">
+          {% autoescape off %}{% for i in bible %}<div class="nowrap"><sup>{{ i.verse }}</sup>&nbsp;{{ i.text }}</div>&nbsp;
+      {% endfor %}{% endautoescape %}</div>
+      {% include "bibleapi/footer.html" %}
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
