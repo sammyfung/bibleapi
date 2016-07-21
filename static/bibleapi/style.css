@@ -1,0 +1,9 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+div.nowrap { display: inline; }
+p.q { display: inline; }
+span.add { font-weight: bold; }
+span.pn { text-decoration: underline; }
+span.addpn { font-weight: bold; text-decoration: underline; }
